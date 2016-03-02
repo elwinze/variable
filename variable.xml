@@ -1,5 +1,5 @@
 <xml xmlns="http://www.w3.org/1999/xhtml">
-  <block type="controls_whileUntil" id="25" inline="false" x="30" y="-112">
+  <block type="controls_whileUntil" id="25" inline="false" x="-82" y="-125">
     <field name="MODE">UNTIL</field>
     <value name="NUMBER">
       <block type="sensor_button" id="33">
@@ -71,7 +71,65 @@
                                               </block>
                                             </value>
                                             <next>
-                                              <block type="multimedia_doupdate" id="178"></block>
+                                              <block type="variables_set" id="184" inline="true">
+                                                <field name="VAR">front_Sensor_Object</field>
+                                                <value name="VALUE">
+                                                  <block type="math_arithmetic" id="191" inline="true">
+                                                    <field name="OP">DIVIDE</field>
+                                                    <value name="A">
+                                                      <block type="math_arithmetic" id="192" inline="true">
+                                                        <field name="OP">ADD</field>
+                                                        <value name="A">
+                                                          <block type="sensor_object" id="193">
+                                                            <field name="OBJECT">RIGHTFRONT</field>
+                                                          </block>
+                                                        </value>
+                                                        <value name="B">
+                                                          <block type="sensor_object" id="194">
+                                                            <field name="OBJECT">LEFTFRONT</field>
+                                                          </block>
+                                                        </value>
+                                                      </block>
+                                                    </value>
+                                                    <value name="B">
+                                                      <block type="math_number" id="195">
+                                                        <field name="NUM">2</field>
+                                                      </block>
+                                                    </value>
+                                                  </block>
+                                                </value>
+                                                <next>
+                                                  <block type="oled_setcursor" id="196" inline="true">
+                                                    <value name="STARTX">
+                                                      <block type="math_number" id="197">
+                                                        <field name="NUM">10</field>
+                                                      </block>
+                                                    </value>
+                                                    <value name="STARTY">
+                                                      <block type="math_number" id="198">
+                                                        <field name="NUM">30</field>
+                                                      </block>
+                                                    </value>
+                                                    <next>
+                                                      <block type="oled_drawtext" id="199">
+                                                        <field name="TEXT">Front:</field>
+                                                        <next>
+                                                          <block type="oled_drawnumber" id="200" inline="true">
+                                                            <value name="NUMBER">
+                                                              <block type="variables_get" id="209">
+                                                                <field name="VAR">front_Sensor_Object</field>
+                                                              </block>
+                                                            </value>
+                                                            <next>
+                                                              <block type="multimedia_doupdate" id="219"></block>
+                                                            </next>
+                                                          </block>
+                                                        </next>
+                                                      </block>
+                                                    </next>
+                                                  </block>
+                                                </next>
+                                              </block>
                                             </next>
                                           </block>
                                         </next>
